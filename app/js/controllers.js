@@ -1,11 +1,17 @@
 'use strict';
 
 /* Controllers */
+var snackMysticApp = angular.module('snackMysticApp', []);
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+snackMysticApp.controller('SnacksCaveCtrl', function SnacksCaveCtrl($scope) {
+   $scope.snacks = [
+     {'name': 'Cheetos',
+      'love': 1},
+     {'name': 'Sour Gummy Worms',
+      'love': 1},
+     {'name': 'Veggie Pizza',
+      'love': 0}
+   ];
+  
+  $scope.orderProp = 'name';
+});

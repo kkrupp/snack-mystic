@@ -1,29 +1,38 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="snackMysticApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <title>The Cave of Wonders</title>
   <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  -->
+  <script src="http://code.jquery.com/jquery.min.js"></script>
   <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular/angular-route.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+</head>
+<body ng-controller="SnacksCaveCtrl">
+  <div class="container">
+      <div class="header">
+        <div class="logo">The Cave of Wonders</div>
+        <div class="nav">
+          <ul>
+            <li><a href="/snackMystic">The Snack Mystic</a></li>
+            <li><a href="/cave">Add a Snack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <p class="info">Welcome to the cave of wonders where the mystrious Snack Mystic lives. Here you can add snacks to the cave for good luck, or suggest a snack for The Snack Mystic to eat.</p>
+        Search the Cave: <input ng-model="query">
+        Sort by:
+          <select ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="love">Least Favorite First</option>
+          </select>
+        <ul>
+          <li ng-repeat="snack in snacks | filter:query | orderBy:orderProp">
+            {{snack.name}}
+          </li>
+        </ul>
+    </div>
+    </div>
 </body>
 </html>
